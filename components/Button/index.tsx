@@ -1,4 +1,4 @@
-import { colors } from "@styles/theme";
+import { colors } from '@styles/theme';
 
 interface ButtonProps {
   onClick?: () => void;
@@ -22,11 +22,9 @@ const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
           justify-content: center;
           align-items: center;
         }
-
         button > :global(svg) {
           margin-right: 8px;
         }
-
         button:hover {
           opacity: 0.8;
         }

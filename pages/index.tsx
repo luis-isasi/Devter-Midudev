@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import { useState, useEffect } from 'react';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
-import { User } from "types";
-import Button from "@components/Button";
-import Avatar from "@components/Avatar";
-import { colors } from "@styles/theme";
-import { loginWidthGithub, onAuthStatedChanged } from "../firebase/client";
+import { User } from 'types';
+import Button from '@components/Button';
+import Avatar from '@components/Avatar';
+import { colors } from '@styles/theme';
+import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client';
 
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | undefined | null>(undefined);

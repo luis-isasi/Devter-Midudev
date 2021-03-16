@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 // import { User } from "types";
 
 const Avatar: React.FC = ({ user }) => {
@@ -19,10 +19,8 @@ const Avatar: React.FC = ({ user }) => {
             className="user-avatar"
           />
         </figure>
-
         <span>{user.userName}</span>
       </div>
-
       <style jsx>{`
         div {
           padding: 4px;
