@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react"
-import GitHubIcon from "@material-ui/icons/GitHub"
+import { useState, useEffect } from 'react'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
-import Button from "@components/Button"
-import Avatar from "@components/Avatar"
+import Button from '@components/Button'
+import Avatar from '@components/Avatar'
+import Logo from '@components/Icons/Logo'
 
-import { User } from "types"
+import { User } from 'types'
 
-import { colors } from "@styles/theme"
+import { colors } from '@styles/theme'
 
-import { loginWidthGithub, onAuthStatedChanged } from "../firebase/client"
+import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client'
 
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | undefined | null>(undefined)
@@ -32,6 +33,7 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
+        <Logo width="100" />
         <h1>Devter</h1>
         <h2>Talk about development with developers </h2>
         {user === null && (
