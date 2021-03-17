@@ -1,5 +1,4 @@
-import Image from 'next/image';
-// import { User } from "types";
+import Image from "next/image";
 
 const Avatar: React.FC = ({ user }) => {
   const myLoader = ({ src, width, quality }) => {
