@@ -1,16 +1,36 @@
-import css from "styled-jsx/css"
+import css from 'styled-jsx/css'
 
-import { addOpacityToColor } from "@styles/utils"
-import { font } from "@styles/theme"
+import { addOpacityToColor } from '@styles/utils'
+import { font } from '@styles/theme'
 
-const BackgroundColor = addOpacityToColor("#000000", 0.3)
+const BackgroundColor = addOpacityToColor('#000000', 0.3)
 
 export default css`
   div {
-    display: grid;
+    background-color: skyblue;
+    display: flex;
+    flex-flow: column;
     height: 100vh;
     width: 100%;
-    place-items: center;
+  }
+
+  div > :global(header) {
+    background-color: gray;
+    height: 54px;
+    min-height: 54px;
+  }
+
+  div > :global(section) {
+    background-color: white;
+    height: 54px;
+    min-height: 54px;
+    flex-grow: 1;
+  }
+
+  div > :global(nav) {
+    background-color: gray;
+    height: 52px;
+    min-height: 52px;
   }
 `
 

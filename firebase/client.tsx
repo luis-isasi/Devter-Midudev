@@ -29,8 +29,6 @@ const mapUserFromFirebaseAuthToUser = (user) => {
 
 export const onAuthStatedChanged = (onChange) => {
   return firebase.auth().onAuthStateChanged((user) => {
-    console.log('cambio para el user')
-
     //there is not a user auth
     if (user === null) {
       onChange(user)

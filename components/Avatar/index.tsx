@@ -1,7 +1,7 @@
-import Image from "next/image"
-import { TypeAvatar } from "./types"
+import Image from 'next/image'
+import { TypeAvatar } from './types'
 
-import style from "./style.module.css"
+import style from './style.module.css'
 
 const Avatar: React.FC<TypeAvatar> = ({ user }) => {
   const myLoader = ({ src, width, quality }) => {

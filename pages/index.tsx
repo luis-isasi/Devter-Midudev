@@ -14,8 +14,6 @@ import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client'
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | undefined | null>(undefined)
 
-  console.log({ user })
-
   useEffect(() => {
     onAuthStatedChanged(setUser)
   }, [])
@@ -51,7 +49,7 @@ const Home: React.FC = () => {
             background-color: #fff;
             width: 90%;
             margin: auto;
-            height: 90vh;
+            height: 100%;
             box-shadow: 0px 0px 10px #d8cece;
             display: grid;
             align-content: center;
@@ -59,7 +57,7 @@ const Home: React.FC = () => {
           }
 
           div > :global(*) {
-            margin: 8px 0px;
+            margin: 12px 0px;
             font-weight: 600;
           }
 
