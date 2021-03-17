@@ -12,22 +12,6 @@ export default css`
     width: 100%;
     place-items: center;
   }
-
-  /* main {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0 0.1);
-    width: 100%;
-    height: 100%;
-  } */
-
-  /* @media( ) {
-    main {
-      height: 90vh;
-      width: {
-      }
-    }
-  } */
 `;
 
 export const globalStyle = css.global`
