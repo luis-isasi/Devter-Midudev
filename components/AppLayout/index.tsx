@@ -4,7 +4,7 @@ const index: React.FC = ({ children }) => {
   return (
     <>
       <div>
-        <header>Hoome</header>
+        <header>Inicio</header>
         <section>{children}</section>
         <nav>NAV</nav>
       </div>

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
@@ -14,9 +15,14 @@ import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client'
 const Home: React.FC = () => {
   const [user, setUser] = useState<User | undefined | null>(undefined)
 
+  const router = useRouter()
   useEffect(() => {
     onAuthStatedChanged(setUser)
   }, [])
+
+  useEffect(() => {
+    user && router.replace('./home')
+  }, [user])
 
   const handleBtn = () => {
     loginWidthGithub()
@@ -41,7 +47,7 @@ const Home: React.FC = () => {
           </Button>
         )}
         {user === undefined && <span>loading...</span>}
-        {user && <Avatar user={user} />}
+        {user && <Avatar userName={user.userName} avatar={user.avatar} />}
       </div>
       <style jsx>
         {`
