@@ -1,9 +1,9 @@
-import css from "styled-jsx/css";
+import css from 'styled-jsx/css';
 
-import { addOpacityToColor } from "@styles/utils";
-import { font } from "@styles/theme";
+import { addOpacityToColor } from '@styles/utils';
+import { font } from '@styles/theme';
 
-const BackgroundColor = addOpacityToColor("#000000", 0.3);
+const BackgroundColor = addOpacityToColor('#000000', 0.3);
 
 export default css`
   div {

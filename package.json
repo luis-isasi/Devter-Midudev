@@ -11,7 +11,7 @@
     "start": "next start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-   "husky": {
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
