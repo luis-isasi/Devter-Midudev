@@ -1,34 +1,43 @@
-import { useState, useEffect } from 'react';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
+import GitHubIcon from '@material-ui/icons/GitHub'
 
-import { User } from 'types';
-import Button from '@components/Button';
-import Avatar from '@components/Avatar';
-import { colors } from '@styles/theme';
-import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client';
+import Button from '@components/Button'
+import Avatar from '@components/Avatar'
+import Logo from '@components/Icons/Logo'
+
+import { User } from 'types'
+
+import { colors } from '@styles/theme'
+
+import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client'
 
 const Home: React.FC = () => {
-  const [user, setUser] = useState<User | undefined | null>(undefined);
+  const [user, setUser] = useState<User | undefined | null>(undefined)
 
-  console.log({ user });
+  const router = useRouter()
+  useEffect(() => {
+    onAuthStatedChanged(setUser)
+  }, [])
 
   useEffect(() => {
-    onAuthStatedChanged(setUser);
-  }, []);
+    user && router.replace('./home')
+  }, [user])
 
   const handleBtn = () => {
     loginWidthGithub()
       .then((user) => {
-        console.log({ user });
+        console.log({ user })
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return (
     <>
       <div>
+        <Logo width="100" />
         <h1>Devter</h1>
         <h2>Talk about development with developers </h2>
         {user === null && (
@@ -38,7 +47,7 @@ const Home: React.FC = () => {
           </Button>
         )}
         {user === undefined && <span>loading...</span>}
-        {user && <Avatar user={user} />}
+        {user && <Avatar userName={user.userName} avatar={user.avatar} />}
       </div>
       <style jsx>
         {`
@@ -46,7 +55,7 @@ const Home: React.FC = () => {
             background-color: #fff;
             width: 90%;
             margin: auto;
-            height: 90vh;
+            height: 100%;
             box-shadow: 0px 0px 10px #d8cece;
             display: grid;
             align-content: center;
@@ -54,7 +63,7 @@ const Home: React.FC = () => {
           }
 
           div > :global(*) {
-            margin: 8px 0px;
+            margin: 12px 0px;
             font-weight: 600;
           }
 
@@ -74,7 +83,7 @@ const Home: React.FC = () => {
         `}
       </style>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

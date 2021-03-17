@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,22 +15,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@components/*": [
-        "./components/*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ]
+      "@components/*": ["./components/*"],
+      "@styles/*": ["./styles/*"],
+      "@Types": ["./types"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "firebase/client.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    ",next"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "firebase/client.tsx"],
+  "exclude": ["node_modules", ",next"]
 }

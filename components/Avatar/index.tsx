@@ -1,42 +1,28 @@
-import Image from "next/image";
+import Image from 'next/image'
+import { TypeAvatar } from './type'
 
-const Avatar: React.FC = ({ user }) => {
-  const myLoader = ({ src, width, quality }) => {
-    return `${src}/?w=${width}&q=${quality || 75}`;
-  };
+import style from './style.module.css'
+
+const Avatar: React.FC<TypeAvatar> = ({ avatar, userName }) => {
+  const myLoader = ({ src }) => {
+    return `${src}`
+  }
 
   return (
-    <>
-      <div>
-        <figure>
-          <Image
-            loader={myLoader}
-            src={user.avatar}
-            alt={user.userName}
-            width={40}
-            height={40}
-            className="user-avatar"
-          />
-        </figure>
-        <span>{user.userName}</span>
-      </div>
-      <style jsx>{`
-        div {
-          padding: 4px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        div > :global(figure) {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          overflow: hidden;
-          margin-right: 6px;
-        }
-      `}</style>
-    </>
-  );
-};
+    <div className={style.avatar}>
+      <figure>
+        <Image
+          loader={myLoader}
+          src={avatar}
+          alt={userName}
+          width={40}
+          height={40}
+          className="user-avatar"
+        />
+      </figure>
+      {userName && <span>{userName}</span>}
+    </div>
+  )
+}
 
-export default Avatar;
+export default Avatar

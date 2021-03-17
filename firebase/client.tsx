@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -9,41 +9,39 @@ const firebaseConfig = {
   messagingSenderId: '367304741252',
   appId: '1:367304741252:web:9cfcc1bfc9261adedacdd1',
   measurementId: 'G-Y2HTHXXRQK',
-};
+}
 
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig)
 } else {
-  firebase.app(); // if already initialized, use that one
+  firebase.app() // if already initialized, use that one
 }
 
 const mapUserFromFirebaseAuthToUser = (user) => {
-  const { displayName, email, photoURL } = user;
+  const { displayName, email, photoURL } = user
 
   return {
     userName: displayName,
     email,
     avatar: photoURL,
-  };
-};
+  }
+}
 
 export const onAuthStatedChanged = (onChange) => {
   return firebase.auth().onAuthStateChanged((user) => {
-    console.log('cambio para el user');
-
     //there is not a user auth
     if (user === null) {
-      onChange(user);
-      return;
+      onChange(user)
+      return
     }
 
-    const dataUser = mapUserFromFirebaseAuthToUser(user);
-    onChange(dataUser);
-  });
-};
+    const dataUser = mapUserFromFirebaseAuthToUser(user)
+    onChange(dataUser)
+  })
+}
 
 export const loginWidthGithub = () => {
-  const GithubProvider = new firebase.auth.GithubAuthProvider();
-  GithubProvider.addScope('repo');
-  return firebase.auth().signInWithPopup(GithubProvider);
-};
+  const GithubProvider = new firebase.auth.GithubAuthProvider()
+  GithubProvider.addScope('repo')
+  return firebase.auth().signInWithPopup(GithubProvider)
+}

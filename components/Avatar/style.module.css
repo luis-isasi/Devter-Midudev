@@ -1,0 +1,16 @@
+
+.avatar {
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.avatar > figure {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 6px;
+}
