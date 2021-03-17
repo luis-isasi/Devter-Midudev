@@ -8,3 +8,4 @@ export default function Logo(props) {
     </svg>
   )
 }
+//todo bien por acá
