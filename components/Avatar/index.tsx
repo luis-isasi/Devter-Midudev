@@ -3,7 +3,12 @@ import { TypeAvatar } from './type'
 
 import style from './style.module.css'
 
-const Avatar: React.FC<TypeAvatar> = ({ avatar, userName }) => {
+const Avatar: React.FC<TypeAvatar> = ({
+  avatar,
+  username,
+  width = 40,
+  height = 40,
+}) => {
   const myLoader = ({ src }) => {
     return `${src}`
   }
@@ -14,13 +19,13 @@ const Avatar: React.FC<TypeAvatar> = ({ avatar, userName }) => {
         <Image
           loader={myLoader}
           src={avatar}
-          alt={userName}
-          width={40}
-          height={40}
+          alt={username}
+          width={width}
+          height={height}
           className="user-avatar"
         />
       </figure>
-      {userName && <span>{userName}</span>}
+      {username && <span>{username}</span>}
     </div>
   )
 }

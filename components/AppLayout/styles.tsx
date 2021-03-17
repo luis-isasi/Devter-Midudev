@@ -15,6 +15,7 @@ export default css`
   }
 
   div > :global(header) {
+    background-color: #ffffff;
     border-bottom: 1px solid ${colors.border};
     height: 54px;
     min-height: 54px;
@@ -24,6 +25,7 @@ export default css`
     height: 54px;
     min-height: 54px;
     flex-grow: 1;
+    overflow-y: auto;
   }
 
   div > :global(nav) {

@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    user && router.replace('./home')
+    // user && router.replace('./home')
   }, [user])
 
   const handleBtn = () => {
@@ -47,7 +47,7 @@ const Home: React.FC = () => {
           </Button>
         )}
         {user === undefined && <span>loading...</span>}
-        {user && <Avatar userName={user.userName} avatar={user.avatar} />}
+        {user && <Avatar username={user.username} avatar={user.avatar} />}
       </div>
       <style jsx>
         {`

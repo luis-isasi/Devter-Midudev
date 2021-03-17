@@ -14,9 +14,9 @@ const Home: React.FC = () => {
   }, [])
 
   const renderTweets = (data) => {
-    return data.map(({ id, avatar, userName, message }) => {
+    return data.map(({ id, avatar, username, message }) => {
       return (
-        <Tweet key={id} avatar={avatar} userName={userName} message={message} />
+        <Tweet key={id} avatar={avatar} username={username} message={message} />
       )
     })
   }

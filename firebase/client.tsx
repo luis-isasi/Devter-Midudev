@@ -21,7 +21,7 @@ const mapUserFromFirebaseAuthToUser = (user) => {
   const { displayName, email, photoURL } = user
 
   return {
-    userName: displayName,
+    username: displayName,
     email,
     avatar: photoURL,
   }

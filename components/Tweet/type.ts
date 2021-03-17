@@ -1,5 +1,5 @@
 export interface PropsTweet {
   avatar: string
-  userName: string
+  username: string
   message: string
 }
