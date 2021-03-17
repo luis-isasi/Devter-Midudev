@@ -1,6 +1,8 @@
-import type { AppProps } from "next/app";
-import AppLayout from "@components/AppLayout";
-import "reset-css";
+import type { AppProps } from "next/app"
+
+import AppLayout from "@components/AppLayout"
+
+import "reset-css"
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -9,7 +11,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <Component {...pageProps} />
       </AppLayout>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App

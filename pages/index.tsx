@@ -1,30 +1,33 @@
-import { useState, useEffect } from 'react';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import { useState, useEffect } from "react"
+import GitHubIcon from "@material-ui/icons/GitHub"
 
-import { User } from 'types';
-import Button from '@components/Button';
-import Avatar from '@components/Avatar';
-import { colors } from '@styles/theme';
-import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client';
+import Button from "@components/Button"
+import Avatar from "@components/Avatar"
+
+import { User } from "types"
+
+import { colors } from "@styles/theme"
+
+import { loginWidthGithub, onAuthStatedChanged } from "../firebase/client"
 
 const Home: React.FC = () => {
-  const [user, setUser] = useState<User | undefined | null>(undefined);
+  const [user, setUser] = useState<User | undefined | null>(undefined)
 
-  console.log({ user });
+  console.log({ user })
 
   useEffect(() => {
-    onAuthStatedChanged(setUser);
-  }, []);
+    onAuthStatedChanged(setUser)
+  }, [])
 
   const handleBtn = () => {
     loginWidthGithub()
       .then((user) => {
-        console.log({ user });
+        console.log({ user })
       })
       .catch((error) => {
-        console.log(error);
-      });
-  };
+        console.log(error)
+      })
+  }
 
   return (
     <>
@@ -74,7 +77,7 @@ const Home: React.FC = () => {
         `}
       </style>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

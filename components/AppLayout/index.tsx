@@ -1,4 +1,4 @@
-import styles, { globalStyle } from "./styles";
+import styles, { globalStyle } from "./styles"
 
 const index: React.FC = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const index: React.FC = ({ children }) => {
       </style>
       <style jsx>{styles}</style>
     </>
-  );
-};
+  )
+}
 
-export default index;
+export default index
