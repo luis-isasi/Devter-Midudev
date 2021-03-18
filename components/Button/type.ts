@@ -1,4 +1,8 @@
+import { MouseEvent } from 'react'
+
 export interface ButtonProps {
-  onClick?: () => void
+  disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   label?: string
 }

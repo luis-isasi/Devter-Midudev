@@ -1,5 +1,5 @@
 export interface TypeAvatar {
-  username?: string
+  userName?: string
   avatar: string
   width?: number
   height?: number

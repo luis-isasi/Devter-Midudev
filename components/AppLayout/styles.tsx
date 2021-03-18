@@ -16,7 +16,7 @@ export default css`
 
   div > :global(header) {
     background-color: #ffffff;
-    border-bottom: 1px solid ${colors.border};
+    border-bottom: 1px solid ${colors.borderPrimary};
     height: 54px;
     min-height: 54px;
   }
@@ -29,7 +29,7 @@ export default css`
   }
 
   div > :global(nav) {
-    border-top: 1px solid ${colors.border};
+    border-top: 1px solid ${colors.borderPrimary};
     height: 52px;
     min-height: 52px;
   }

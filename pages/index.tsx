@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub'
 
 import Button from '@components/Button'
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
           </Button>
         )}
         {user === undefined && <span>loading...</span>}
-        {user && <Avatar username={user.username} avatar={user.avatar} />}
+        {user && <Avatar userName={user.userName} avatar={user.avatar} />}
       </div>
       <style jsx>
         {`
