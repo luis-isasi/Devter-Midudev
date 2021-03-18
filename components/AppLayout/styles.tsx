@@ -15,7 +15,8 @@ export default css`
   }
 
   div > :global(header) {
-    border-bottom: 1px solid ${colors.border};
+    background-color: #ffffff;
+    border-bottom: 1px solid ${colors.borderPrimary};
     height: 54px;
     min-height: 54px;
   }
@@ -24,10 +25,11 @@ export default css`
     height: 54px;
     min-height: 54px;
     flex-grow: 1;
+    overflow-y: auto;
   }
 
   div > :global(nav) {
-    border-top: 1px solid ${colors.border};
+    border-top: 1px solid ${colors.borderPrimary};
     height: 52px;
     min-height: 52px;
   }
@@ -39,10 +41,15 @@ export const globalStyle = css.global`
       radial-gradient(${BackgroundColor} 1px, transparent 1px);
     background-position: 0 0, 25px 25px;
     background-size: 50px 50px;
-    font-family: ${font.roboto};
+    font-family: ${font.base};
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  textarea,
+  input {
+    font-family: ${font.base};
   }
 `

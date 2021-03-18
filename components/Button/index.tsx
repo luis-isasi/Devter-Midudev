@@ -1,14 +1,18 @@
-import { colors } from '@styles/theme';
+import { colors } from '@styles/theme'
 
-interface ButtonProps {
-  onClick?: () => void;
-  label?: string;
-}
+import { ButtonProps } from './type'
 
-const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  type,
+  disabled,
+}) => {
   return (
     <>
-      <button onClick={onClick}>{children}</button>
+      <button onClick={onClick} type={type} disabled={disabled}>
+        {children}
+      </button>
       <style jsx>{`
         button {
           background-color: ${colors.black};
@@ -28,9 +32,13 @@ const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
         button:hover {
           opacity: 0.8;
         }
+        button:disabled {
+          pointer-events: none;
+          opacity: 0.6;
+        }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

@@ -1,25 +1,24 @@
 import Image from 'next/image'
 import { TypeAvatar } from './type'
 
-import style from './style.module.css'
+import style from './style.module.scss'
 
-const Avatar: React.FC<TypeAvatar> = ({ avatar, userName }) => {
+const Avatar: React.FC<TypeAvatar> = ({ avatar, userName, width, height }) => {
   const myLoader = ({ src }) => {
     return `${src}`
   }
 
   return (
     <div className={style.avatar}>
-      <figure>
-        <Image
-          loader={myLoader}
-          src={avatar}
-          alt={userName}
-          width={40}
-          height={40}
-          className="user-avatar"
-        />
-      </figure>
+      <Image
+        layout="fixed"
+        loader={myLoader}
+        src={avatar}
+        alt={userName}
+        width={width || 40}
+        height={height || 40}
+        className={style.userAvatar}
+      />
       {userName && <span>{userName}</span>}
     </div>
   )

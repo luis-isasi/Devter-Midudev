@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import { User } from 'types'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -17,13 +18,16 @@ if (!firebase.apps.length) {
   firebase.app() // if already initialized, use that one
 }
 
-const mapUserFromFirebaseAuthToUser = (user) => {
-  const { displayName, email, photoURL } = user
+const db = firebase.firestore()
+
+const mapUserFromFirebaseAuthToUser = (user): User => {
+  const { displayName, email, photoURL, uid } = user
 
   return {
     userName: displayName,
     email,
     avatar: photoURL,
+    userId: uid,
   }
 }
 
@@ -44,4 +48,45 @@ export const loginWidthGithub = () => {
   const GithubProvider = new firebase.auth.GithubAuthProvider()
   GithubProvider.addScope('repo')
   return firebase.auth().signInWithPopup(GithubProvider)
+}
+
+export const addTweet = ({ avatar, content, userId, userName }) => {
+  return db.collection('tweets').add({
+    avatar,
+    content,
+    userId,
+    userName,
+    createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    sharedCount: 0,
+  })
+}
+
+export const fetchTweets = () => {
+  return db
+    .collection('tweets')
+    .get()
+    .then((snapshot) => {
+      return snapshot.docs.map((doc) => {
+        //lo se que se podria pensar es que en doc ya tendriamos avatar, userName y asi pero no
+        //tenemos que transformar esa data a un objeto plano de la siguiente manera
+        const data = doc.data()
+
+        //sacamos el id de doc, ¿por qué? primero no viene de data porque el id que genera firestore no esta dentro de la data
+        // lo sacamos de doc porque el id esta fuera de la data que almacena firestore
+        const id = doc.id
+
+        const { createdAt } = data
+        const date = new Date(createdAt.seconds * 1000)
+        const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
+          date
+        )
+
+        return {
+          ...data,
+          id,
+          createdAt: normalizedCreatedAt,
+        }
+      })
+    })
 }
