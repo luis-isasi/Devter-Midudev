@@ -1,9 +1,6 @@
-import { colors } from '@styles/theme';
+import { colors } from '@styles/theme'
 
-interface ButtonProps {
-  onClick?: () => void;
-  label?: string;
-}
+import { ButtonProps } from './type'
 
 const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
@@ -30,7 +27,7 @@ const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

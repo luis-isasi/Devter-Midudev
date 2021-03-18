@@ -6,5 +6,5 @@ export const colors = {
 }
 
 export const font = {
-  roboto: `'Roboto', sans-serif`,
+  base: `'Roboto', sans-serif`,
 }

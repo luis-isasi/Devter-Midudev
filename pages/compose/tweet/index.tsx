@@ -1,5 +1,12 @@
+import Button from '@components/Button'
+
 const Tweet = () => {
-  return <div>MY TWEET</div>
+  return (
+    <div>
+      <textarea placeholder="¿Qué esta pasando?" />
+      <Button>Add Tweet</Button>
+    </div>
+  )
 }
 
 export default Tweet

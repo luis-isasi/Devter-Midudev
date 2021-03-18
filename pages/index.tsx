@@ -5,33 +5,22 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import Button from '@components/Button'
 import Avatar from '@components/Avatar'
 import Logo from '@components/Icons/Logo'
-
-import { User } from 'types'
+import { useUser } from 'hooks/useUser'
 
 import { colors } from '@styles/theme'
 
-import { loginWidthGithub, onAuthStatedChanged } from '../firebase/client'
+import { loginWidthGithub } from '../firebase/client'
 
 const Home: React.FC = () => {
-  const [user, setUser] = useState<User | undefined | null>(undefined)
-
+  const { user } = useUser()
   const router = useRouter()
-  useEffect(() => {
-    onAuthStatedChanged(setUser)
-  }, [])
 
   useEffect(() => {
-    // user && router.replace('./home')
+    user && router.replace('./home')
   }, [user])
 
   const handleBtn = () => {
     loginWidthGithub()
-      .then((user) => {
-        console.log({ user })
-      })
-      .catch((error) => {
-        console.log(error)
-      })
   }
 
   return (
