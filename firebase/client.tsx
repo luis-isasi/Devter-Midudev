@@ -50,12 +50,13 @@ export const loginWidthGithub = () => {
   return firebase.auth().signInWithPopup(GithubProvider)
 }
 
-export const addTweet = ({ avatar, content, userId, userName }) => {
+export const addTweet = ({ avatar, content, userId, userName, img }) => {
   return db.collection('tweets').add({
     avatar,
     content,
     userId,
     userName,
+    img,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     likesCount: 0,
     sharedCount: 0,
@@ -94,4 +95,13 @@ export const fetchTweets = () => {
         }
       })
     })
+}
+
+export const uploadImage = (file) => {
+  const ref = firebase.storage().ref('images/${file.name}')
+
+  // ref.put(file) retorna la tarea que se esta haciendo, con esto podemos manejar errores, controlar eventos, etc.
+  const task = ref.put(file)
+
+  return task
 }

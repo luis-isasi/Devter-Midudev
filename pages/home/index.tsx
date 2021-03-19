@@ -30,7 +30,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Head>
-        <title>{`Home - ${user.userName}`}</title>
+        <title>{`Home - ${user?.userName}`}</title>
       </Head>
       <div>{renderTweets(tweets)}</div>
     </>
