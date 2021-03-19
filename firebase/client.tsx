@@ -50,12 +50,13 @@ export const loginWidthGithub = () => {
   return firebase.auth().signInWithPopup(GithubProvider)
 }
 
-export const addTweet = ({ avatar, content, userId, userName }) => {
+export const addTweet = ({ avatar, content, userId, userName, img }) => {
   return db.collection('tweets').add({
     avatar,
     content,
     userId,
     userName,
+    img,
     createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     likesCount: 0,
     sharedCount: 0,
@@ -63,8 +64,11 @@ export const addTweet = ({ avatar, content, userId, userName }) => {
 }
 
 export const fetchTweets = () => {
+  //podemos ordenar la data con orderBy(), este recibe 2 paranetros o quizas mas, el primero es el campo por el que ordenaremos
+  //el segundo parametro es la forma de como lo queremos obtener, hay 2 => 'desc | asc'
   return db
     .collection('tweets')
+    .orderBy('createdAt', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
@@ -77,16 +81,27 @@ export const fetchTweets = () => {
         const id = doc.id
 
         const { createdAt } = data
-        const date = new Date(createdAt.seconds * 1000)
-        const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
-          date
-        )
+
+        //esto nos imprime una fecha en el siguiente formato 18/03/2021
+        // const date = new Date(createdAt.seconds * 1000)
+        // const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
+        //   date
+        // )
 
         return {
           ...data,
           id,
-          createdAt: normalizedCreatedAt,
+          createdAt: +createdAt.toDate(),
         }
       })
     })
+}
+
+export const uploadImage = (file) => {
+  const ref = firebase.storage().ref(`images/${file.name}`)
+
+  // ref.put(file) retorna la tarea que se esta haciendo, con esto podemos manejar errores, controlar eventos, etc.
+  const task = ref.put(file)
+
+  return task
 }

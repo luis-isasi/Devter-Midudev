@@ -1,32 +1,52 @@
 import { useEffect, useState } from 'react'
+import Head from 'next/head'
 
 import Tweet from '@components/Tweet'
 import { fetchTweets } from 'firebase/client'
 import { useUser } from 'hooks/useUser'
+import { Tweet as TypeTweet } from 'types'
 
 const Home: React.FC = () => {
   const [tweets, setTweets] = useState<[]>([])
   const { user } = useUser()
-
-  console.log({ tweets })
 
   useEffect(() => {
     user && fetchTweets().then(setTweets)
   }, [user])
 
   const renderTweets = (data) =>
-    data.map(({ id, avatar, userName, content, userId, createdAt }) => (
-      <Tweet
-        key={id}
-        avatar={avatar}
-        userName={userName}
-        content={content}
-        userId={userId}
-        createdAt={createdAt}
-      />
-    ))
+    data.map(
+      ({
+        id,
+        avatar,
+        userName,
+        content,
+        userId,
+        createdAt,
+        img,
+      }: TypeTweet) => {
+        return (
+          <Tweet
+            key={id}
+            img={img}
+            avatar={avatar}
+            userName={userName}
+            content={content}
+            userId={userId}
+            createdAt={createdAt}
+          />
+        )
+      }
+    )
 
-  return <div>{renderTweets(tweets)}</div>
+  return (
+    <>
+      <Head>
+        <title>{`Home - ${user?.userName}`}</title>
+      </Head>
+      <div>{renderTweets(tweets)}</div>
+    </>
+  )
 }
 
 export default Home

@@ -4,8 +4,10 @@
   min-height: auto;
   height: auto;
   padding: 8px 8px;
+
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .content-text {
@@ -18,9 +20,34 @@
     font-size: 1rem;
     margin: 4px 0px;
   }
+}
+
+.header-tweet {
+  display: flex;
+  place-items: center start;
 
   & span {
     font-size: 1.2rem !important;
     font-weight: 600;
+  }
+
+  & strong {
+    list-style: disc;
+    margin: 0px 8px;
+    font-size: 0.9rem;
+    opacity: 0.75;
+
+    span {
+      font-weight: 700;
+    }
+  }
+}
+.content-img-tweet {
+  margin: 16px 0px;
+  height: auto;
+
+  .img-tweet {
+    border-radius: 12px;
+    height: auto;
   }
 }
