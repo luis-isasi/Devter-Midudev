@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import Head from 'next/head'
 
 import Tweet from '@components/Tweet'
 import { fetchTweets } from 'firebase/client'
@@ -27,7 +27,14 @@ const Home: React.FC = () => {
       )
     })
 
-  return <div>{renderTweets(tweets)}</div>
+  return (
+    <>
+      <Head>
+        <title>{`Home - ${user.userName}`}</title>
+      </Head>
+      <div>{renderTweets(tweets)}</div>
+    </>
+  )
 }
 
 export default Home

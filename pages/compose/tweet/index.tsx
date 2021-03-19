@@ -1,14 +1,16 @@
 import { ChangeEvent, MouseEvent, useReducer } from 'react'
-import { useUser } from 'hooks/useUser'
-import Button from '@components/Button'
-import { addTweet } from 'firebase/client'
-import style from './style.module.scss'
 
-import { colors } from '@styles/theme'
 import { useRouter } from 'next/router'
+import Head from 'next/Head'
+
+import Button from '@components/Button'
+import Avatar from '@components/Avatar'
+import { useUser } from 'hooks/useUser'
+import { addTweet } from 'firebase/client'
 import { InitialState, FormAction } from './type'
 
-import Avatar from '@components/Avatar'
+import style from './style.module.scss'
+import { colors } from '@styles/theme'
 
 const initialState: InitialState = {
   tweet: '',
@@ -72,6 +74,9 @@ const Tweet: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Create a new Tweet</title>
+      </Head>
       <div className={style.container}>
         <Avatar avatar={user.avatar} width={80} height={80} />
         <form>
