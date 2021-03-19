@@ -2,7 +2,6 @@ import Nav from './Nav'
 import Header from './Header'
 import styles, { globalStyle } from './styles'
 
-
 //dejando un commentario en AppLayout
 const index: React.FC = ({ children }) => {
   return (
