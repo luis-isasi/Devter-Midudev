@@ -4,6 +4,7 @@ import Head from 'next/head'
 import Tweet from '@components/Tweet'
 import { fetchTweets } from 'firebase/client'
 import { useUser } from 'hooks/useUser'
+import { Tweet as TypeTweet } from 'types'
 
 const Home: React.FC = () => {
   const [tweets, setTweets] = useState<[]>([])
@@ -14,18 +15,29 @@ const Home: React.FC = () => {
   }, [user])
 
   const renderTweets = (data) =>
-    data.map(({ id, avatar, userName, content, userId, createdAt }) => {
-      return (
-        <Tweet
-          key={id}
-          avatar={avatar}
-          userName={userName}
-          content={content}
-          userId={userId}
-          createdAt={createdAt}
-        />
-      )
-    })
+    data.map(
+      ({
+        id,
+        avatar,
+        userName,
+        content,
+        userId,
+        createdAt,
+        img,
+      }: TypeTweet) => {
+        return (
+          <Tweet
+            key={id}
+            img={img}
+            avatar={avatar}
+            userName={userName}
+            content={content}
+            userId={userId}
+            createdAt={createdAt}
+          />
+        )
+      }
+    )
 
   return (
     <>

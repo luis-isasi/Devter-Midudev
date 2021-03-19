@@ -2,11 +2,12 @@ import { PropsTweet } from './type'
 
 import Avatar from '@components/Avatar'
 import useTimeAgo from 'hooks/useTimeAgo'
+import { Tweet as TypeTweet } from 'types'
 
 import style from './style.module.scss'
 import css from './style.module.scss'
 
-const Tweet: React.FC<PropsTweet> = ({
+const Tweet: React.FC<TypeTweet> = ({
   avatar,
   userName,
   content,
@@ -14,6 +15,7 @@ const Tweet: React.FC<PropsTweet> = ({
   likesCount,
   sharedCount,
   createdAt,
+  img,
 }) => {
   const date = useTimeAgo(createdAt)
 
@@ -24,6 +26,7 @@ const Tweet: React.FC<PropsTweet> = ({
         <span>{userName}</span>
         <strong>{date}</strong>
         <p>{content}</p>
+        {img && <img src={img} alt={createdAt} />}
       </div>
     </article>
   )
