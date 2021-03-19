@@ -1,12 +1,14 @@
+import Nav from './Nav'
+import Header from './Header'
 import styles, { globalStyle } from './styles'
 
 const index: React.FC = ({ children }) => {
   return (
     <>
       <div>
-        <header>Inicio</header>
+        <Header />
         <section>{children}</section>
-        <nav>NAV</nav>
+        <Nav />
       </div>
       <style jsx>{styles}</style>
       <style jsx global>
