@@ -6,7 +6,7 @@ export interface User {
 }
 
 export interface Tweet {
-  id: string
+  id?: string
   avatar: string
   content: string
   createdAt: string

@@ -26,10 +26,10 @@ const Tweet: React.FC<TypeTweet> = ({
         <div className={`${css['content-text']}`}>
           <section className={`${css['header-tweet']}`}>
             <span>{userName}</span>
-            <strong>
+            <time>
               <span> · </span>
               {`${date}`}
-            </strong>
+            </time>
           </section>
           <p>{content}</p>
 
