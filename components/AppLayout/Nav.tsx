@@ -10,7 +10,7 @@ const Nav: React.FC = () => {
   return (
     <>
       <nav>
-        <Link href="/">
+        <Link href="/home">
           <a>
             <HomeIcon width={32} height={32} stroke={colors.primary} />
           </a>
