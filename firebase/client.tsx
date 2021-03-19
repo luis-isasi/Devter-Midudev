@@ -63,8 +63,11 @@ export const addTweet = ({ avatar, content, userId, userName }) => {
 }
 
 export const fetchTweets = () => {
+  //podemos ordenar la data con orderBy(), este recibe 2 paranetros o quizas mas, el primero es el campo por el que ordenaremos
+  //el segundo parametro es la forma de como lo queremos obtener, hay 2 => 'desc | asc'
   return db
     .collection('tweets')
+    .orderBy('createdAt', 'desc')
     .get()
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
@@ -77,15 +80,17 @@ export const fetchTweets = () => {
         const id = doc.id
 
         const { createdAt } = data
-        const date = new Date(createdAt.seconds * 1000)
-        const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
-          date
-        )
+
+        //esto nos imprime una fecha en el siguiente formato 18/03/2021
+        // const date = new Date(createdAt.seconds * 1000)
+        // const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
+        //   date
+        // )
 
         return {
           ...data,
           id,
-          createdAt: normalizedCreatedAt,
+          createdAt: +createdAt.toDate(),
         }
       })
     })

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 import Tweet from '@components/Tweet'
 import { fetchTweets } from 'firebase/client'
@@ -8,23 +9,23 @@ const Home: React.FC = () => {
   const [tweets, setTweets] = useState<[]>([])
   const { user } = useUser()
 
-  console.log({ tweets })
-
   useEffect(() => {
     user && fetchTweets().then(setTweets)
   }, [user])
 
   const renderTweets = (data) =>
-    data.map(({ id, avatar, userName, content, userId, createdAt }) => (
-      <Tweet
-        key={id}
-        avatar={avatar}
-        userName={userName}
-        content={content}
-        userId={userId}
-        createdAt={createdAt}
-      />
-    ))
+    data.map(({ id, avatar, userName, content, userId, createdAt }) => {
+      return (
+        <Tweet
+          key={id}
+          avatar={avatar}
+          userName={userName}
+          content={content}
+          userId={userId}
+          createdAt={createdAt}
+        />
+      )
+    })
 
   return <div>{renderTweets(tweets)}</div>
 }

@@ -6,20 +6,16 @@ import style from './style.module.scss'
 
 import { colors } from '@styles/theme'
 import { useRouter } from 'next/router'
+import { InitialState, FormAction } from './type'
 
 import Avatar from '@components/Avatar'
-
-interface InitialState {
-  tweet: string
-  formState: 'INITIAL' | 'LOADING' | 'ERROR' | 'SUCCESS'
-}
 
 const initialState: InitialState = {
   tweet: '',
   formState: 'INITIAL',
 }
 
-const formReducer = (state, action) => {
+const formReducer = (state: InitialState, action: FormAction) => {
   switch (action.type) {
     case 'SET_TWEET': {
       return { ...state, tweet: action.value }

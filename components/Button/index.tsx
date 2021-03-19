@@ -15,12 +15,13 @@ const Button: React.FC<ButtonProps> = ({
       </button>
       <style jsx>{`
         button {
-          background-color: ${colors.black};
+          background-color: ${colors.primary};
           color: #fff;
           border-radius: 24px;
           border: none;
           cursor: pointer;
           padding: 8px 16px;
+          font-weight: 600;
 
           display: flex;
           justify-content: center;
