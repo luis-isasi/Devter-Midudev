@@ -98,7 +98,7 @@ export const fetchTweets = () => {
 }
 
 export const uploadImage = (file) => {
-  const ref = firebase.storage().ref('images/${file.name}')
+  const ref = firebase.storage().ref(`images/${file.name}`)
 
   // ref.put(file) retorna la tarea que se esta haciendo, con esto podemos manejar errores, controlar eventos, etc.
   const task = ref.put(file)
