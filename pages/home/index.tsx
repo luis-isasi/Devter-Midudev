@@ -28,6 +28,7 @@ const Home: React.FC = () => {
         return (
           <Tweet
             key={id}
+            id={id}
             img={img}
             avatar={avatar}
             userName={userName}
