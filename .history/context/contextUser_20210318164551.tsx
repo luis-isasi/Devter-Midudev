@@ -7,8 +7,6 @@ interface TypeContextUser {
   user: User
 }
 
-console.log(process.env.NEXT_PUBLIC_VARIABLE_LOCAL)
-
 const ContextUser = createContext<TypeContextUser | undefined>(undefined)
 
 export const ContextUserProvider: React.FC = ({ children }) => {

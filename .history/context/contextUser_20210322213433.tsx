@@ -7,7 +7,7 @@ interface TypeContextUser {
   user: User
 }
 
-console.log(process.env.NEXT_PUBLIC_VARIABLE_LOCAL)
+console.log(process.env.VARIABLE_LOCAL)
 
 const ContextUser = createContext<TypeContextUser | undefined>(undefined)
 

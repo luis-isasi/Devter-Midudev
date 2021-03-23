@@ -2,3 +2,15 @@ node_modules
 .next
 
 .husky
+
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# firebase keys
+firebase/firebase-keys.json
+
+
