@@ -7,7 +7,7 @@ import Button from '@components/Button'
 import Avatar from '@components/Avatar'
 import { useUser } from 'hooks/useUser'
 import { addTweet, uploadImage } from 'firebase/client'
-import { InitialState, FormAction } from './type'
+import { InitialState, FormAction } from 'types'
 
 import style from './style.module.scss'
 import { colors } from '@styles/theme'

@@ -6,13 +6,28 @@ export interface User {
 }
 
 export interface Tweet {
-  id?: string
+  id: string
   avatar: string
   content: string
-  createdAt: string
+  createdAt: number
   img?: string
   likesCount?: number
   sharedCount?: number
   userId?: string
   userName: string
 }
+
+export interface InitialState {
+  tweet: string
+  formState: 'INITIAL' | 'LOADING' | 'ERROR' | 'SUCCESS'
+}
+
+export type FormAction =
+  | {
+      type: 'SET_TWEET'
+      value: string
+    }
+  | {
+      type: 'SET_STATE_FORM'
+      value: string
+    }

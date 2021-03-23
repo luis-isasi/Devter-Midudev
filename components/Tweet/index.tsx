@@ -8,7 +8,6 @@ import { Tweet as TypeTweet } from 'types'
 
 import style from './style.module.scss'
 import css from './style.module.scss'
-import { HTMLAttributes } from 'react'
 
 const Tweet: React.FC<TypeTweet> = ({
   id,
@@ -25,7 +24,7 @@ const Tweet: React.FC<TypeTweet> = ({
   const router = useRouter()
 
   const handleClick = (e) => {
-    router.push(`/status/${id}`)
+    router.push(`/tweet/${id}`)
   }
 
   return (
@@ -35,7 +34,7 @@ const Tweet: React.FC<TypeTweet> = ({
         <div className={`${css['content-text']}`}>
           <section className={`${css['header-tweet']}`}>
             <span>{userName}</span>
-            <Link href={`/status/${id}`}>
+            <Link href={`/tweet/${id}`}>
               <a>
                 <time>
                   <span> · </span>

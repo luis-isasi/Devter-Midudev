@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import { User } from 'types'
+import { User, Tweet } from 'types'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -63,6 +63,61 @@ export const addTweet = ({ avatar, content, userId, userName, img }) => {
   })
 }
 
+export const mapTweetFromFirebaseToTweetObject = (doc) => {
+  //lo se que se podria pensar es que en doc ya tendriamos avatar, userName y asi pero no
+  //tenemos que transformar esa data a un objeto plano de la siguiente manera
+  const data = doc.data()
+
+  //sacamos el id de doc, ¿por qué? primero no viene de data porque el id que genera firestore no esta dentro de la data
+  // lo sacamos de doc porque el id esta fuera de la data que almacena firestore
+  const id = doc.id
+
+  const {
+    avatar,
+    content,
+    createdAt,
+    img,
+    likesCount,
+    sharedCount,
+    userId,
+    userName,
+  } = data
+
+  const dataTweet: Tweet = {
+    id,
+    avatar,
+    content,
+    img,
+    likesCount,
+    sharedCount,
+    userId,
+    userName,
+    createdAt: +createdAt.toDate(),
+  }
+
+  //esto nos imprime una fecha en el siguiente formato 18/03/2021
+  // const date = new Date(createdAt.seconds * 1000)
+  // const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
+  //   date
+  // )
+
+  return dataTweet
+}
+
+export const listenTweetsFromFirebase = (callback) => {
+  return (
+    db
+      .collection('tweets')
+      .orderBy('createdAt', 'desc')
+      // .limit(20)
+      //onSnapshot nos permite escuchar un cambio en la base de datos y ejecutar una funcion
+      .onSnapshot(({ docs }) => {
+        const newTweets = docs.map(mapTweetFromFirebaseToTweetObject)
+        callback(newTweets)
+      })
+  )
+}
+
 export const fetchTweets = () => {
   //podemos ordenar la data con orderBy(), este recibe 2 paranetros o quizas mas, el primero es el campo por el que ordenaremos
   //el segundo parametro es la forma de como lo queremos obtener, hay 2 => 'desc | asc'
@@ -71,29 +126,7 @@ export const fetchTweets = () => {
     .orderBy('createdAt', 'desc')
     .get()
     .then((snapshot) => {
-      return snapshot.docs.map((doc) => {
-        //lo se que se podria pensar es que en doc ya tendriamos avatar, userName y asi pero no
-        //tenemos que transformar esa data a un objeto plano de la siguiente manera
-        const data = doc.data()
-
-        //sacamos el id de doc, ¿por qué? primero no viene de data porque el id que genera firestore no esta dentro de la data
-        // lo sacamos de doc porque el id esta fuera de la data que almacena firestore
-        const id = doc.id
-
-        const { createdAt } = data
-
-        //esto nos imprime una fecha en el siguiente formato 18/03/2021
-        // const date = new Date(createdAt.seconds * 1000)
-        // const normalizedCreatedAt = new Intl.DateTimeFormat('es-ES').format(
-        //   date
-        // )
-
-        return {
-          ...data,
-          id,
-          createdAt: +createdAt.toDate(),
-        }
-      })
+      return snapshot.docs.map(mapTweetFromFirebaseToTweetObject)
     })
 }
 

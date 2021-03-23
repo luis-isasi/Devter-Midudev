@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const DATE_UNITS = [
+const DATE_UNITS: [string, number][] = [
   ['day', 86400],
   ['hour', 3600],
   ['minute', 60],
@@ -13,7 +13,7 @@ const getDateDiffs = (timeStamp) => {
 
   for (const [unit, secondsInUnit] of DATE_UNITS) {
     if (Math.abs(elapsed) > secondsInUnit || unit === 'second') {
-      const value = Math.round(elapsed / secondsInUnit)
+      const value = Math.round(elapsed / +secondsInUnit)
       return { value, unit }
     }
   }
@@ -36,7 +36,7 @@ const useTimeAgo = (timeStamp) => {
 
   const { value, unit } = timeAgo
 
-  return rtf.format(value, unit)
+  return rtf.format(value, 'day')
 }
 
 export default useTimeAgo
