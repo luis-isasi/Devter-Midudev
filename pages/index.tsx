@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import GitHubIcon from '@material-ui/icons/GitHub'
+// import { GitHubIcon, FacebookIcon, TwitterIcon } from '@material-ui/icons'
+import GitHubIcon from '@material-ui/icons/github'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 
 import Button from '@components/Button'
 import Avatar from '@components/Avatar'
-// import Logo from '@components/Icons/Logo'
 import { useUser } from 'hooks/useUser'
 
 import { colors } from '@styles/theme'

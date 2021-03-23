@@ -2,6 +2,7 @@ import Tweet from '@components/Tweet'
 import { useRouter } from 'next/router'
 
 import { firestore } from 'firebase/admin'
+import { fetchTweets, mapTweetFromFirebaseToTweetObject } from 'firebase/client'
 
 const TweetPage = (props) => {
   const router = useRouter()
@@ -21,18 +22,22 @@ const TweetPage = (props) => {
 }
 
 export const getStaticPaths = async () => {
+  const tweets = await fetchTweets()
+
+  const paths = tweets.map((tweet) => {
+    return { params: { id: tweet.id } }
+  })
+
+  console.log(paths)
+
   return {
-    paths: [
-      { params: { id: 'l8jR7V3xUAz1f5VnKnTT' } },
-      { params: { id: '0YgDbYvfbQzMaEwGWzqW' } }, // See the "paths" section below
-    ],
+    paths,
     fallback: true,
 
     // fallback: true,
     // el proceso que hay por detras de fallback: true es muy interesante, basicamente cambiar este valor a true
     // hace que genere las paginas estaticas en el servidor siempre y cuando no haga match con la data que hay en "getStaticPaths"
-    // cuando no la encuentra, lo que hace es
-
+    // cuando no la encuentra, lo que hace es lo siguiete:
     /*
     1 => Intenta hacer pre rendering del componente, en este caso TweetPage, con la data que tiene en ese momento,
     2 => Ya en el cliente este ejecuta el "getStaticProps" y obtener la data de esa pagina
