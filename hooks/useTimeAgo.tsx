@@ -36,7 +36,7 @@ const useTimeAgo = (timeStamp) => {
 
   const { value, unit } = timeAgo
 
-  return rtf.format(value, 'day')
+  return rtf.format(value, unit)
 }
 
 export default useTimeAgo

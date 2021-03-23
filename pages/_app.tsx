@@ -9,11 +9,11 @@ import 'reset-css'
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <AppLayout>
-        <ContextUserProvider>
+      <ContextUserProvider>
+        <AppLayout>
           <Component {...pageProps} />
-        </ContextUserProvider>
-      </AppLayout>
+        </AppLayout>
+      </ContextUserProvider>
     </>
   )
 }

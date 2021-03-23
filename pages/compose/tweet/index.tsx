@@ -51,13 +51,16 @@ const Tweet: React.FC = () => {
   const router = useRouter()
 
   useEffect(() => {
+    if (!user) router.replace('/')
+  }, [])
+
+  useEffect(() => {
     if (task) {
       //podemos escuchar varios eventos, pero en este caso esucharemos el evento "state_changed"
       //state_changed recibe 3 parametros, esas son funciones para manejar la carga : (... onProgress, onError, onComplete)
       const onError = () => {}
       const onProgress = () => {}
       const onComplete = () => {
-        console.log('COMPLETADO!!!!!!!!!!!')
         //de esta manera obtenemos la url de la foto, esto devuelve una promesa con al url
         task.snapshot.ref.getDownloadURL().then(setImgUrl)
       }
@@ -101,13 +104,11 @@ const Tweet: React.FC = () => {
 
     //seteamos el valor, indicando que el file entro en el textarea
     setDrag(DRAG_IMAGE_STATES.DRAG_OVER)
-    console.log('entrando')
   }
 
   const handleDragLeave = (e: React.DragEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     setDrag(DRAG_IMAGE_STATES.NONE)
-    console.log('saliendo')
   }
 
   const handleDrop = (e: React.DragEvent<HTMLTextAreaElement>) => {

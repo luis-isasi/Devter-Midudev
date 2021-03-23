@@ -44,16 +44,14 @@ const Tweet: React.FC<TypeTweet> = ({
             </Link>
           </section>
           <p>{content}</p>
-
           {img && (
             <figure className={`${css['content-img-tweet']}`}>
               <Image
-                layout="responsive"
                 loader={({ src }) => `${src}`}
                 src={img}
                 alt={userName}
-                width={330}
-                height={230}
+                width={850}
+                height={450}
                 className={`${css['img-tweet']}`}
               />
             </figure>

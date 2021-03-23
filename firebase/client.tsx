@@ -47,7 +47,14 @@ export const onAuthStatedChanged = (onChange) => {
 export const loginWidthGithub = () => {
   const GithubProvider = new firebase.auth.GithubAuthProvider()
   GithubProvider.addScope('repo')
+
   return firebase.auth().signInWithPopup(GithubProvider)
+}
+
+export const loginWithFb = () => {
+  const FbProvider = new firebase.auth.FacebookAuthProvider()
+
+  return firebase.auth().signInWithPopup(FbProvider)
 }
 
 export const addTweet = ({ avatar, content, userId, userName, img }) => {

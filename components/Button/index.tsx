@@ -7,6 +7,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   type,
   disabled,
+  backgroundColor,
 }) => {
   return (
     <>
@@ -15,7 +16,9 @@ const Button: React.FC<ButtonProps> = ({
       </button>
       <style jsx>{`
         button {
-          background-color: ${colors.primary};
+          background-color: ${backgroundColor
+            ? `${backgroundColor}`
+            : `${colors.primary}`};
           color: #fff;
           border-radius: 24px;
           border: none;

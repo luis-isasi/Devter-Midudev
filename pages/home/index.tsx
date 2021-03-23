@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Tweet from '@components/Tweet'
 import { fetchTweets, listenTweetsFromFirebase } from 'firebase/client'
@@ -10,7 +11,10 @@ const Home: React.FC = () => {
   const [tweets, setTweets] = useState<TypeTweet[]>([])
   const { user } = useUser()
 
+  const router = useRouter()
+
   useEffect(() => {
+    if (!user) router.replace('/')
     /*
     //primera forma para obtener los tweets en home
 

@@ -17,8 +17,10 @@
 }
 
 .content-text {
+  flex-grow: 1;
   height: 100%;
   margin: 0px 8px;
+
   display: flex;
   flex-flow: column;
 
@@ -60,11 +62,11 @@
 }
 
 .content-img-tweet {
-  margin: 16px 0px;
+  margin: 12px auto;
   height: auto;
+  width: auto;
 
   .img-tweet {
-    border-radius: 12px;
-    height: auto;
+    object-fit: contain;
   }
 }

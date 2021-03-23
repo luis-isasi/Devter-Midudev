@@ -1,7 +1,9 @@
 node_modules
 .next
 
+.history
 .husky
+
 
 
 # local env files
