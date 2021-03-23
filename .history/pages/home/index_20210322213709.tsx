@@ -32,6 +32,8 @@ const Home: React.FC = () => {
     let onSubscripcion
 
     if (user) {
+      console.log('dentro de if User')
+
       onSubscripcion = listenTweetsFromFirebase(setTweets)
     }
 
@@ -39,6 +41,8 @@ const Home: React.FC = () => {
       // ahora, ¿por qué ejecutamos onSubscipcion?, en la mayoria de casos, firebase nos regresa una promesa en sus metodos,
       // pero en una subscripcion nos devuelve una funcion para desubscribirnos y esta la almacenamos detro de onSubscripcion
       // ahora la ejecutamos solamente cuando exista un metodo para desubscribirnos dentro de "onSubscripcion"
+
+      console.log('DESMONTANDO COMPONENT HOME')
 
       onSubscripcion && onSubscripcion()
     }

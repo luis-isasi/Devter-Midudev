@@ -10,6 +10,8 @@ const Home: React.FC = () => {
   const [tweets, setTweets] = useState<TypeTweet[]>([])
   const { user } = useUser()
 
+  console.log(process.env.NODE_ENV)
+
   useEffect(() => {
     /*
     //primera forma para obtener los tweets en home

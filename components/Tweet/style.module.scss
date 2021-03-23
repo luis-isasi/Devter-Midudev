@@ -1,5 +1,5 @@
 .container {
-  margin: 8px 0px;
+  padding: 8px 0px;
   border-bottom: 1px solid #e0e0e0;
   min-height: auto;
   height: auto;
@@ -8,6 +8,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  transition: all 0.35s;
+
+  &:hover {
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+  }
 }
 
 .content-text {
@@ -31,17 +37,28 @@
     font-weight: 600;
   }
 
-  & strong {
-    list-style: disc;
-    margin: 0px 8px;
-    font-size: 0.9rem;
-    opacity: 0.75;
+  & a {
+    text-decoration: none;
 
-    span {
-      font-weight: 700;
+    & time {
+      list-style: disc;
+      margin: 0px 8px;
+      font-size: 0.9rem;
+      color: #000;
+      opacity: 0.75;
+
+      span {
+        font-weight: 700;
+      }
     }
   }
+
+  & a:hover {
+    text-decoration: underline;
+    color: #000000aa;
+  }
 }
+
 .content-img-tweet {
   margin: 16px 0px;
   height: auto;
