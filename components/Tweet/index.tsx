@@ -3,9 +3,15 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import Avatar from '@components/Avatar'
+import AddLike from './components/AddLike'
+import AddComment from './components/AddComment'
+import ReTweet from './components/ReTweet'
+
 import useTimeAgo from 'hooks/useTimeAgo'
 import { Tweet as TypeTweet } from 'types'
+import { addLikeTweet } from 'firebase/client'
 
+import { colors } from '@styles/theme'
 import style from './style.module.scss'
 import css from './style.module.scss'
 
@@ -25,6 +31,10 @@ const Tweet: React.FC<TypeTweet> = ({
 
   const handleClick = (e) => {
     router.push(`/tweet/${id}`)
+  }
+
+  const onClick = () => {
+    addLikeTweet('0YgDbYvfbQzMaEwGWzqW', 0)
   }
 
   return (
@@ -56,9 +66,21 @@ const Tweet: React.FC<TypeTweet> = ({
               />
             </figure>
           )}
+          <section className="options-tweet">
+            <AddComment />
+            <AddLike />
+            <ReTweet />
+          </section>
         </div>
       </article>
-      <style jsx>{``}</style>
+      <style jsx>{`
+        .options-tweet {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          margin: 8px 0px;
+        }
+      `}</style>
     </>
   )
 }

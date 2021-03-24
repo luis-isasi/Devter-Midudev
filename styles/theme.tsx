@@ -4,6 +4,7 @@ export const colors = {
   secondary: '#1c5480',
   borderPrimary: '#cecaca',
   borderSecundary: '#dfdbdb',
+  iconsTweet: '#5B7083',
 }
 
 export const font = {

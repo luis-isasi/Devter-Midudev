@@ -70,6 +70,7 @@ export const SignOut = () => {
   return firebase.auth().signOut()
 }
 
+//ADD A NEW TWEET
 export const addTweet = ({ avatar, content, userId, userName, img }) => {
   return db.collection('tweets').add({
     avatar,
@@ -81,6 +82,16 @@ export const addTweet = ({ avatar, content, userId, userName, img }) => {
     likesCount: 0,
     sharedCount: 0,
   })
+}
+
+//UPDATE A TWEET
+export const addLikeTweet = (IdTweet: string, likesCount: number) => {
+  return db
+    .collection('tweets')
+    .doc(IdTweet)
+    .update({
+      likesCount: ++likesCount,
+    })
 }
 
 export const mapTweetFromFirebaseToTweetObject = (doc) => {
