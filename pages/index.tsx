@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-// import { GitHubIcon, FacebookIcon, TwitterIcon } from '@material-ui/icons'
-import GitHubIcon from '@material-ui/icons/github'
+import GitHubIcon from '@material-ui/icons/GitHub'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 
