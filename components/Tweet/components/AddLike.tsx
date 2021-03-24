@@ -1,15 +1,12 @@
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 
-import style from './style'
+import { Btn } from './style'
 
 const AddLike: React.FC = () => {
   return (
-    <>
-      <button>
-        <FavoriteBorderIcon />
-      </button>
-      <style jsx>{style}</style>
-    </>
+    <Btn textHover="Like">
+      <FavoriteBorderIcon />
+    </Btn>
   )
 }
 

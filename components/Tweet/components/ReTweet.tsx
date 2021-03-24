@@ -1,14 +1,14 @@
 import RepeatOutlinedIcon from '@material-ui/icons/RepeatOutlined'
 
-import style from './style'
+import { Btn } from './style'
 
 const ReTweet = () => {
   return (
     <>
-      <button>
+      <Btn textHover="Retweet">
         <RepeatOutlinedIcon />
-      </button>
-      <style jsx>{style}</style>
+      </Btn>
+
       <style jsx>{`
         button > :global(*) {
           transform: rotate(90deg);

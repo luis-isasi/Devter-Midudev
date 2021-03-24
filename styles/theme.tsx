@@ -5,6 +5,7 @@ export const colors = {
   borderPrimary: '#cecaca',
   borderSecundary: '#dfdbdb',
   iconsTweet: '#5B7083',
+  backgroundHoverText: '#6e6e74',
 }
 
 export const font = {

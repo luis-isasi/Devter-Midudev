@@ -1,15 +1,12 @@
 import MessageOutlinedIcon from '@material-ui/icons/MessageOutlined'
 
-import style from './style'
+import { Btn } from './style'
 
 const AddComment = () => {
   return (
-    <>
-      <button>
-        <MessageOutlinedIcon />
-      </button>
-      <style jsx>{style}</style>
-    </>
+    <Btn textHover="Reply">
+      <MessageOutlinedIcon />
+    </Btn>
   )
 }
 

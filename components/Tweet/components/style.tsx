@@ -1,37 +1,43 @@
-import css from 'styled-jsx/css'
+import styled from 'styled-components'
 
 import { colors } from 'styles/theme'
 
-export default css`
-  button {
-    border: none;
-    background-color: transparent;
-    color: ${colors.iconsTweet};
-    margin: 0px;
-    padding: 0px;
+interface BtnProps {
+  textHover?: string
+}
 
-    > ::before {
-      content: '';
-      background-color: blue;
-      height: 50px;
-      width: 50px;
+export const Btn = styled.button.attrs((props: BtnProps) => ({
+  textHover: props.textHover,
+}))`
+  border: none;
+  background-color: transparent;
+  color: ${colors.iconsTweet};
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:hover {
+    &::before {
       position: absolute;
+      content: ${({ textHover }) => `'${textHover}'`};
+      color: #fff;
+      background-color: ${colors.backgroundHoverText};
+      font-size: 0.7rem;
+      padding: 4px 6px;
+      border-radius: 4px;
+      bottom: -120%;
+
+      display: flex;
+      place-items: center;
     }
   }
 
-  button:hover {
-    background-color: blue;
-  }
-
-  /* button::before {
-    content: '';
-    background-color: blue;
-    height: 50px;
-    width: 50px;
-    position: absolute;
-  } */
-
-  button > :global(*) {
+  > * {
     font-size: 1.4rem;
   }
 `
