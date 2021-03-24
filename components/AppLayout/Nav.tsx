@@ -1,4 +1,4 @@
-import Link from 'next/Link'
+import Link from 'next/link'
 
 import HomeIcon from '@components/Icons/Home'
 import SearchIcon from '@components/Icons/Search'

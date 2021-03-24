@@ -1,7 +1,7 @@
 import { ChangeEvent, MouseEvent, useReducer, useState, useEffect } from 'react'
 
 import { useRouter } from 'next/router'
-import Head from 'next/Head'
+import Head from 'next/head'
 
 import Button from '@components/Button'
 import Avatar from '@components/Avatar'

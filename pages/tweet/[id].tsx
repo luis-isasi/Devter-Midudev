@@ -28,8 +28,6 @@ export const getStaticPaths = async () => {
     return { params: { id: tweet.id } }
   })
 
-  console.log(paths)
-
   return {
     paths,
     fallback: true,

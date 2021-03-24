@@ -11,12 +11,15 @@ import { useUser } from 'hooks/useUser'
 
 import { colors } from '@styles/theme'
 
-import { loginWidthGithub, loginWithFb } from '../firebase/client'
+import {
+  loginWidthGithub,
+  loginWithFb,
+  loginWithGoogle,
+} from '../firebase/client'
 
 const Home: React.FC = () => {
   const { user } = useUser()
   const router = useRouter()
-  console.log({ user })
 
   useEffect(() => {
     user && router.replace('./home')
@@ -28,6 +31,10 @@ const Home: React.FC = () => {
 
   const handleLoginFB = () => {
     loginWithFb()
+  }
+
+  const handleLoginGoogle = () => {
+    loginWithGoogle()
   }
 
   return (
@@ -47,6 +54,10 @@ const Home: React.FC = () => {
             <Button onClick={handleLoginFB} backgroundColor="#3b5998">
               <FacebookIcon />
               Log in with facebook
+            </Button>
+            <Button onClick={handleLoginGoogle}>
+              {/* <FacebookIcon /> */}
+              Log in with Google
             </Button>
           </>
         )}
