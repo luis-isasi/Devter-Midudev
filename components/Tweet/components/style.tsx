@@ -1,9 +1,11 @@
+import React from 'react'
 import styled from 'styled-components'
 
 import { colors } from 'styles/theme'
 
 interface BtnProps {
   textHover?: string
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export const Btn = styled.button<BtnProps>`
@@ -40,6 +42,10 @@ export const Btn = styled.button<BtnProps>`
       display: flex;
       place-items: center;
     }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   > div {

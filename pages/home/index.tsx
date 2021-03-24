@@ -58,6 +58,8 @@ const Home: React.FC = () => {
         userId,
         createdAt,
         img,
+        likesCount,
+        sharedCount,
       }: TypeTweet) => {
         return (
           <Tweet
@@ -69,6 +71,8 @@ const Home: React.FC = () => {
             content={content}
             userId={userId}
             createdAt={createdAt}
+            likesCount={likesCount}
+            sharedCount={sharedCount}
           />
         )
       }

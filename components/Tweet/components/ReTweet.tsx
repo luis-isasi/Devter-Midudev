@@ -8,13 +8,14 @@ const ReTweet = () => {
       <Btn textHover="Retweet">
         <div>
           <RepeatOutlinedIcon className="iconOptionsTweet" />
-          <span>89</span>
+          <span></span>
         </div>
       </Btn>
 
       <style jsx>{`
-        button > :global(*) {
+        button > :global(div) > :global(.iconOptionsTweet) {
           transform: rotate(90deg);
+          background-color: blue;
         }
       `}</style>
     </>

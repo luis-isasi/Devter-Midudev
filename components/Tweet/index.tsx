@@ -9,7 +9,6 @@ import ReTweet from './components/ReTweet'
 
 import useTimeAgo from 'hooks/useTimeAgo'
 import { Tweet as TypeTweet } from 'types'
-import { addLikeTweet } from 'firebase/client'
 
 import style from './style.module.scss'
 import css from './style.module.scss'
@@ -30,10 +29,6 @@ const Tweet: React.FC<TypeTweet> = ({
 
   const handleClick = (e) => {
     router.push(`/tweet/${id}`)
-  }
-
-  const onClick = () => {
-    addLikeTweet('0YgDbYvfbQzMaEwGWzqW', 0)
   }
 
   return (
@@ -67,7 +62,7 @@ const Tweet: React.FC<TypeTweet> = ({
           )}
           <section className="options-tweet">
             <AddComment />
-            <AddLike />
+            <AddLike id={id} likesCount={likesCount} />
             <ReTweet />
           </section>
         </div>
