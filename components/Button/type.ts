@@ -5,4 +5,5 @@ export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset'
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   label?: string
+  backgroundColor?: string
 }

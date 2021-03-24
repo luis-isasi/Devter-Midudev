@@ -1,15 +1,21 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import GitHubIcon from '@material-ui/icons/GitHub'
+// import { GitHubIcon, FacebookIcon, TwitterIcon } from '@material-ui/icons'
+import GitHubIcon from '@material-ui/icons/github'
+import FacebookIcon from '@material-ui/icons/Facebook'
+import TwitterIcon from '@material-ui/icons/Twitter'
 
 import Button from '@components/Button'
 import Avatar from '@components/Avatar'
-import Logo from '@components/Icons/Logo'
 import { useUser } from 'hooks/useUser'
 
 import { colors } from '@styles/theme'
 
-import { loginWidthGithub } from '../firebase/client'
+import {
+  loginWidthGithub,
+  loginWithFb,
+  loginWithGoogle,
+} from '../firebase/client'
 
 const Home: React.FC = () => {
   const { user } = useUser()
@@ -19,21 +25,41 @@ const Home: React.FC = () => {
     user && router.replace('./home')
   }, [user])
 
-  const handleBtn = () => {
+  const handleLoginGithub = () => {
     loginWidthGithub()
+  }
+
+  const handleLoginFB = () => {
+    loginWithFb()
+  }
+
+  const handleLoginGoogle = () => {
+    loginWithGoogle()
   }
 
   return (
     <>
       <div>
-        <Logo width="100" />
-        <h1>Devter</h1>
+        <figure>
+          <TwitterIcon style={{ fontSize: 150 }} />
+        </figure>
+        <h1>Twitter-clone</h1>
         <h2>Talk about development with developers </h2>
         {user === null && (
-          <Button onClick={handleBtn}>
-            <GitHubIcon />
-            Log in with GitHub
-          </Button>
+          <>
+            <Button onClick={handleLoginGithub} backgroundColor={colors.black}>
+              <GitHubIcon />
+              Log in with GitHub
+            </Button>
+            <Button onClick={handleLoginFB} backgroundColor="#3b5998">
+              <FacebookIcon />
+              Log in with facebook
+            </Button>
+            <Button onClick={handleLoginGoogle}>
+              {/* <FacebookIcon /> */}
+              Log in with Google
+            </Button>
+          </>
         )}
         {user === undefined && <span>loading...</span>}
         {user && <Avatar userName={user.userName} avatar={user.avatar} />}
@@ -58,6 +84,10 @@ const Home: React.FC = () => {
 
           * {
             text-align: center;
+          }
+
+          div > :global(figure) {
+            color: ${colors.primary};
           }
 
           h1 {

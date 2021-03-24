@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const DATE_UNITS: [string, number][] = [
+const DATE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
   ['day', 86400],
   ['hour', 3600],
   ['minute', 60],
@@ -36,7 +36,7 @@ const useTimeAgo = (timeStamp) => {
 
   const { value, unit } = timeAgo
 
-  return rtf.format(value, 'day')
+  return rtf.format(value, unit)
 }
 
 export default useTimeAgo

@@ -44,10 +44,26 @@ export const onAuthStatedChanged = (onChange) => {
   })
 }
 
+//LOGIN CON GIT HUB
 export const loginWidthGithub = () => {
   const GithubProvider = new firebase.auth.GithubAuthProvider()
   GithubProvider.addScope('repo')
+
   return firebase.auth().signInWithPopup(GithubProvider)
+}
+
+//LOGIN CON FACEBOOK
+export const loginWithFb = () => {
+  const FbProvider = new firebase.auth.FacebookAuthProvider()
+
+  return firebase.auth().signInWithPopup(FbProvider)
+}
+
+//lOGIN CON GOOGLE
+export const loginWithGoogle = () => {
+  const GoogleProvider = new firebase.auth.GoogleAuthProvider()
+
+  return firebase.auth().signInWithPopup(GoogleProvider)
 }
 
 export const addTweet = ({ avatar, content, userId, userName, img }) => {

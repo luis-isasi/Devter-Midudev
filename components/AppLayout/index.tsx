@@ -2,8 +2,23 @@ import Nav from './Nav'
 import Header from './Header'
 import styles, { globalStyle } from './styles'
 
-//dejando un commentario en AppLayout
-const index: React.FC = ({ children }) => {
+import { useUser } from 'hooks/useUser'
+
+const AppLayout: React.FC = ({ children }) => {
+  const { user } = useUser()
+
+  if (!user)
+    return (
+      <>
+        <div>
+          <section>{children}</section>
+        </div>
+        <style jsx>{styles}</style>
+        <style jsx global>
+          {globalStyle}
+        </style>
+      </>
+    )
   return (
     <>
       <div>
@@ -19,4 +34,4 @@ const index: React.FC = ({ children }) => {
   )
 }
 
-export default index
+export default AppLayout
