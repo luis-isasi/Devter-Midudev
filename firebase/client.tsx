@@ -66,6 +66,10 @@ export const loginWithGoogle = () => {
   return firebase.auth().signInWithPopup(GoogleProvider)
 }
 
+export const SignOut = () => {
+  return firebase.auth().signOut()
+}
+
 export const addTweet = ({ avatar, content, userId, userName, img }) => {
   return db.collection('tweets').add({
     avatar,

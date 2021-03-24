@@ -1,11 +1,17 @@
 import { useRouter } from 'next/router'
 
 import Avatar from '@components/Avatar'
+import Button from '@components/Button'
 import { useUser } from 'hooks/useUser'
+import { SignOut } from 'firebase/client'
 
 const Header: React.FC = () => {
   const { user } = useUser()
   const router = useRouter()
+
+  const handleSignOut = () => {
+    SignOut()
+  }
 
   return (
     <>
@@ -18,14 +24,17 @@ const Header: React.FC = () => {
             ? 'Create a new Tweet'
             : ''}
         </span>
+        <Button onClick={handleSignOut} backgroundColor="#000">
+          Sign Out
+        </Button>
       </header>
       <style jsx>{`
         header {
-          padding: 0px 12px;
+          padding: 0px 20px;
           font-weight: 600;
 
           display: flex;
-          justify-content: flex-start;
+          justify-content: space-between;
           align-items: center;
         }
 
