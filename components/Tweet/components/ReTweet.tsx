@@ -6,7 +6,10 @@ const ReTweet = () => {
   return (
     <>
       <Btn textHover="Retweet">
-        <RepeatOutlinedIcon />
+        <div>
+          <RepeatOutlinedIcon className="iconOptionsTweet" />
+          <span>89</span>
+        </div>
       </Btn>
 
       <style jsx>{`

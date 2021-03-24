@@ -11,7 +11,6 @@ import useTimeAgo from 'hooks/useTimeAgo'
 import { Tweet as TypeTweet } from 'types'
 import { addLikeTweet } from 'firebase/client'
 
-import { colors } from '@styles/theme'
 import style from './style.module.scss'
 import css from './style.module.scss'
 

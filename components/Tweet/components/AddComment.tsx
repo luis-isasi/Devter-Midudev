@@ -5,7 +5,10 @@ import { Btn } from './style'
 const AddComment = () => {
   return (
     <Btn textHover="Reply">
-      <MessageOutlinedIcon />
+      <div>
+        <MessageOutlinedIcon className="iconOptionsTweet" />
+        <span>15</span>
+      </div>
     </Btn>
   )
 }

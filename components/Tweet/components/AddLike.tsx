@@ -5,7 +5,10 @@ import { Btn } from './style'
 const AddLike: React.FC = () => {
   return (
     <Btn textHover="Like">
-      <FavoriteBorderIcon />
+      <div>
+        <FavoriteBorderIcon className="iconOptionsTweet" />
+        <span>68</span>
+      </div>
     </Btn>
   )
 }
