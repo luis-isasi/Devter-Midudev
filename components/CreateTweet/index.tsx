@@ -123,6 +123,19 @@ const Tweet: React.FC<PropsTweet> = ({
       }
 
       addCommentInTweet(idTweet, comment)
+        .then(() => {
+          dispatch({
+            type: 'SET_STATE_FORM',
+            value: 'SUCCESS',
+          })
+          router.push('/home')
+        })
+        .catch((error) => {
+          dispatch({
+            type: 'SET_STATE_FORM',
+            value: 'ERROR',
+          })
+        })
       setIsModal(false)
     }
   }
