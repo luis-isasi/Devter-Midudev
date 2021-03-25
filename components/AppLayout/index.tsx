@@ -1,5 +1,5 @@
-import Nav from './Nav'
-import Header from './Header'
+import Nav from './components/Nav'
+import Header from './components/Header'
 import styles, { globalStyle } from './styles'
 
 import { useUser } from 'hooks/useUser'

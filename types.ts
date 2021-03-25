@@ -3,6 +3,7 @@ export interface User {
   email: string
   userName: string
   userId: number
+  coverPhoto?: string
 }
 
 export interface Tweet {

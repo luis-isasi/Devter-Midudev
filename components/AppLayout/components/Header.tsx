@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import Avatar from '@components/Avatar'
@@ -24,12 +25,28 @@ const Header: React.FC = () => {
   return (
     <>
       <header>
-        {router.pathname === '/tweet/[id]' ? (
+        {router.pathname === '/[idUser]' ? (
+          <div className="container-userName">
+            <button
+              onClick={() => {
+                router.push('/home')
+              }}
+              className="btnBack"
+            >
+              <ArrowBackIcon />
+            </button>
+            <h1>{user.userName}</h1>
+          </div>
+        ) : router.pathname === '/tweet/[id]' ? (
           <button onClick={handleBack} className="btnBack">
             <ArrowBackIcon />
           </button>
         ) : (
-          <Avatar avatar={user.avatar} width={40} height={40} />
+          <Link href={`/${user.userName}`}>
+            <a>
+              <Avatar avatar={user.avatar} width={40} height={40} />
+            </a>
+          </Link>
         )}
         <span>
           {router.pathname === '/home'
@@ -56,7 +73,13 @@ const Header: React.FC = () => {
           font-size: 1.3rem;
           margin: 0px 8px;
         }
-        header > :global(.btnBack) {
+
+        .container-userName {
+          display: flex;
+          place-items: center;
+        }
+
+        .btnBack {
           background-color: transparent;
           border: none;
           color: ${colors.primary};

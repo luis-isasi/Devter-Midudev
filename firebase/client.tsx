@@ -44,6 +44,8 @@ export const onAuthStatedChanged = (onChange) => {
   })
 }
 
+//----------------------LOGIN----------------------
+
 //LOGIN CON GIT HUB
 export const loginWidthGithub = () => {
   const GithubProvider = new firebase.auth.GithubAuthProvider()
@@ -69,6 +71,8 @@ export const loginWithGoogle = () => {
 export const SignOut = () => {
   return firebase.auth().signOut()
 }
+
+//----------------------TWEET----------------------
 
 //ADD A NEW TWEET
 export const addTweet = ({ avatar, content, userId, userName, img }) => {
@@ -104,6 +108,30 @@ export const addLikeTweet = (IdTweet: string, likesCount: number) => {
       likesCount: ++likesCount,
     })
 }
+
+//----------------------USER----------------------
+
+export const createNewUser = ({
+  userId,
+  avatar,
+  coverPhoto,
+  userName,
+  email,
+}: User) => {
+  return db.collection('users').add({
+    userId,
+    avatar,
+    coverPhoto,
+    userName,
+    email,
+  })
+}
+
+export const getUser = () => {
+  // return
+}
+
+export const updateUser = () => {}
 
 export const mapTweetFromFirebaseToTweetObject = (doc) => {
   //lo se que se podria pensar es que en doc ya tendriamos avatar, userName y asi pero no

@@ -11,6 +11,8 @@ const Home: React.FC = () => {
   const [tweets, setTweets] = useState<TypeTweet[]>([])
   const { user } = useUser()
 
+  // console.log({ user })
+
   const router = useRouter()
 
   useEffect(() => {
