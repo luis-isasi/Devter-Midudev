@@ -1,9 +1,9 @@
 .container {
-  padding: 8px 0px;
+  padding: 12px 0px;
   border-bottom: 1px solid #e0e0e0;
   min-height: auto;
   height: auto;
-  padding: 8px 8px 0px 8px;
+  padding: 8px;
 
   display: flex;
   justify-content: flex-start;
@@ -23,11 +23,6 @@
 
   display: flex;
   flex-flow: column;
-
-  > * {
-    font-size: 1rem;
-    margin: 4px 0px;
-  }
 }
 
 .header-tweet {
@@ -35,7 +30,7 @@
   place-items: center start;
 
   & span {
-    font-size: 1.2rem !important;
+    font-size: 1rem !important;
     font-weight: 600;
   }
 
@@ -45,7 +40,7 @@
     & time {
       list-style: disc;
       margin: 0px 8px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: #000;
       opacity: 0.75;
 

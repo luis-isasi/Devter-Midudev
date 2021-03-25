@@ -81,10 +81,21 @@ export const addTweet = ({ avatar, content, userId, userName, img }) => {
     createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
     likesCount: 0,
     sharedCount: 0,
+    comments: [],
   })
 }
 
-//UPDATE A TWEET
+//ADD A COMMENT IN TWEET
+export const addCommentInTweet = (id: string, comment) => {
+  return db
+    .collection('tweets')
+    .doc(id)
+    .update({
+      comments: firebase.firestore.FieldValue.arrayUnion(comment),
+    })
+}
+
+//ADD LIKE IN TWEET
 export const addLikeTweet = (IdTweet: string, likesCount: number) => {
   return db
     .collection('tweets')
@@ -112,9 +123,10 @@ export const mapTweetFromFirebaseToTweetObject = (doc) => {
     sharedCount,
     userId,
     userName,
+    comments,
   } = data
 
-  const dataTweet: Tweet = {
+  const dataTweet = {
     id,
     avatar,
     content,
@@ -123,6 +135,7 @@ export const mapTweetFromFirebaseToTweetObject = (doc) => {
     sharedCount,
     userId,
     userName,
+    comments,
     createdAt: +createdAt.toDate(),
   }
 

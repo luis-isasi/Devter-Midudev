@@ -12,8 +12,13 @@ import { Tweet as TypeTweet } from 'types'
 
 import style from './style.module.scss'
 import css from './style.module.scss'
+import { colors } from 'styles/theme'
 
-const Tweet: React.FC<TypeTweet> = ({
+interface PropsTweet extends TypeTweet {
+  tweetInModal?: boolean
+}
+
+const Tweet: React.FC<PropsTweet> = ({
   id,
   avatar,
   userName,
@@ -23,6 +28,8 @@ const Tweet: React.FC<TypeTweet> = ({
   sharedCount,
   createdAt,
   img,
+  tweetInModal,
+  comments,
 }) => {
   const date = useTimeAgo(createdAt)
   const router = useRouter()
@@ -60,19 +67,69 @@ const Tweet: React.FC<TypeTweet> = ({
               />
             </figure>
           )}
-          <section className="options-tweet">
-            <AddComment />
-            <AddLike id={id} likesCount={likesCount} />
-            <ReTweet />
-          </section>
+          {router.pathname === '/tweet/[id]' && (
+            <section className="description-tweet">
+              <span>
+                <strong style={{ fontWeight: 'bolder' }}>
+                  {comments?.length}
+                </strong>{' '}
+                ReTweets
+              </span>
+              <span>
+                <strong style={{ fontWeight: 'bolder' }}>{likesCount}</strong>{' '}
+                Likes
+              </span>
+            </section>
+          )}
+          {!tweetInModal && (
+            <section className="options-tweet">
+              <AddComment
+                lengthComments={comments?.length}
+                avatar={avatar}
+                idTweet={id}
+                userName={userName}
+                createdAt={createdAt}
+                content={content}
+                img={img}
+              />
+              <AddLike id={id} likesCount={likesCount} />
+              <ReTweet />
+            </section>
+          )}
         </div>
       </article>
       <style jsx>{`
+        div > :global(*) {
+          margin: ${router.pathname === '/tweet/[id]' ? '8px 0px' : '6px 0px'};
+        }
+
+        .description-tweet {
+          height: 44px;
+          min-height: 44px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          border-top: 1px solid ${colors.borderPrimary};
+          border-bottom: 1px solid ${colors.borderPrimary};
+        }
+
         .options-tweet {
           display: flex;
           justify-content: space-around;
           align-items: center;
-          margin: 8px 0px;
+          min-height: ${router.pathname === '/tweet/[id]' && '38px'};
+          height: ${router.pathname === '/tweet/[id]' && '38px'};
+          margin: ${router.pathname === '/tweet/[id]'
+            ? '0px'
+            : '4px 0px 0px 0px'};
+        }
+
+        div > :global(p) {
+          font-size: ${router.pathname === '/tweet/[id]' ? '1.3rem' : '1rem'};
+          font-weight: ${router.pathname === '/tweet/[id]' ? '300' : '400'};
+          line-height: ${router.pathname === '/tweet/[id]'
+            ? '1.65rem'
+            : '1.2rem'};
         }
       `}</style>
     </>

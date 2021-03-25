@@ -13,7 +13,17 @@ export interface Tweet {
   img?: string
   likesCount?: number
   sharedCount?: number
+  comments?: []
   userId?: string
+  userName: string
+}
+
+export interface CommentTweet {
+  id?: string
+  avatar: string
+  content: string
+  createdAt: number
+  userId: string
   userName: string
 }
 

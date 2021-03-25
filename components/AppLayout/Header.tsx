@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import Avatar from '@components/Avatar'
 import Button from '@components/Button'
 import { useUser } from 'hooks/useUser'
 import { SignOut } from 'firebase/client'
+
+import { colors } from 'styles/theme'
 
 const Header: React.FC = () => {
   const { user } = useUser()
@@ -13,10 +16,21 @@ const Header: React.FC = () => {
     SignOut()
   }
 
+  const handleBack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    router.back()
+  }
+
   return (
     <>
       <header>
-        {user && <Avatar avatar={user.avatar} />}
+        {router.pathname === '/tweet/[id]' ? (
+          <button onClick={handleBack} className="btnBack">
+            <ArrowBackIcon />
+          </button>
+        ) : (
+          <Avatar avatar={user.avatar} width={40} height={40} />
+        )}
         <span>
           {router.pathname === '/home'
             ? 'Home'
@@ -41,6 +55,11 @@ const Header: React.FC = () => {
         header > :global(span) {
           font-size: 1.3rem;
           margin: 0px 8px;
+        }
+        header > :global(.btnBack) {
+          background-color: transparent;
+          border: none;
+          color: ${colors.primary};
         }
       `}</style>
     </>
