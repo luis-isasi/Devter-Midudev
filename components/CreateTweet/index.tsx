@@ -47,7 +47,11 @@ interface PropsTweet {
   setIsModal?: (isModal: boolean) => void
 }
 
-const Tweet: React.FC<PropsTweet> = ({ typeForm, idTweet, setIsModal }) => {
+const Tweet: React.FC<PropsTweet> = ({
+  typeForm = 'NEW_TWEET',
+  idTweet,
+  setIsModal,
+}) => {
   const [state, dispatch] = useReducer(formReducer, initialState)
   const [drag, setDrag] = useState(DRAG_IMAGE_STATES.ERROR)
   const [task, setTask] = useState(null)
