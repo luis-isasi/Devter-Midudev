@@ -3,7 +3,6 @@ import CommentTweet from '@components/CommentTweet'
 import { useRouter } from 'next/router'
 
 import { firestore } from 'firebase/admin'
-import { fetchTweets } from 'firebase/client'
 
 const TweetPage = (props) => {
   const router = useRouter()
@@ -122,7 +121,7 @@ export const getServerSideProps = async (params) => {
     .collection('tweets')
     .doc(id)
     .then((doc) => {
-      //como antes lo explicacamos, lo que nos devuelve firestore es un doc
+      //como antes lo explicamos, lo que nos devuelve firestore es un doc
       //en el cual tenemos la function data para traernos toda la data de ese doc
       const data = doc.data()
       const id = doc.id
