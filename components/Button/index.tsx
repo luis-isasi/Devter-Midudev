@@ -8,6 +8,7 @@ const Button: React.FC<ButtonProps> = ({
   type,
   disabled,
   backgroundColor,
+  colorText,
 }) => {
   return (
     <>
@@ -19,23 +20,27 @@ const Button: React.FC<ButtonProps> = ({
           background-color: ${backgroundColor
             ? `${backgroundColor}`
             : `${colors.primary}`};
-          color: #fff;
+          color: ${colorText || '#fff'};
           border-radius: 24px;
           border: none;
           cursor: pointer;
           padding: 8px 16px;
           font-weight: 600;
+          box-shadow: 0px 0px 5px #d4cdcd;
 
           display: flex;
           justify-content: center;
           align-items: center;
         }
+
         button > :global(svg) {
           margin-right: 8px;
         }
+
         button:hover {
           opacity: 0.8;
         }
+
         button:disabled {
           pointer-events: none;
           opacity: 0.6;

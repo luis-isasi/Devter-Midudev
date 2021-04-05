@@ -6,4 +6,5 @@ export interface ButtonProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   label?: string
   backgroundColor?: string
+  colorText?: string
 }

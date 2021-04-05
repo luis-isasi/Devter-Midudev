@@ -73,7 +73,7 @@ const Tweet: React.FC<PropsTweet> = ({
                 <strong style={{ fontWeight: 'bolder' }}>
                   {comments?.length}
                 </strong>{' '}
-                ReTweets
+                Comments
               </span>
               <span>
                 <strong style={{ fontWeight: 'bolder' }}>{likesCount}</strong>{' '}

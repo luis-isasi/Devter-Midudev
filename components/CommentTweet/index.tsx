@@ -39,6 +39,12 @@ const CommentTweet: React.FC<TypeCommentTweet> = ({
           align-items: flex-start;
           padding: 8px;
         }
+
+        article:hover {
+          background-color: rgb(243, 243, 243);
+          cursor: pointer;
+        }
+
         article > :global(*) {
           margin-left: 8px;
           font-weight: 300;

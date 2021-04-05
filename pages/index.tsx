@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import GitHubIcon from '@material-ui/icons/GitHub'
@@ -54,15 +55,27 @@ const Home: React.FC = () => {
               <FacebookIcon />
               Log in with facebook
             </Button>
-            <Button onClick={handleLoginGoogle}>
-              {/* <FacebookIcon /> */}
-              Log in with Google
+            <Button
+              onClick={handleLoginGoogle}
+              backgroundColor="#fff"
+              colorText="#717174"
+            >
+              <Image
+                src="/images/google.png"
+                layout="fixed"
+                alt="google"
+                width={26}
+                height={26}
+                className="imgGoogle"
+              />
+              <p style={{ marginLeft: '8px' }}>Log in with Google</p>
             </Button>
           </>
         )}
         {user === undefined && <span>loading...</span>}
         {user && <Avatar userName={user.userName} avatar={user.avatar} />}
       </div>
+
       <style jsx>
         {`
           div {

@@ -121,7 +121,6 @@ export const getServerSideProps = async (params) => {
   return firestore
     .collection('tweets')
     .doc(id)
-    .get()
     .then((doc) => {
       //como antes lo explicacamos, lo que nos devuelve firestore es un doc
       //en el cual tenemos la function data para traernos toda la data de ese doc
